@@ -51,6 +51,7 @@
     <None Include="3 Comparing F# with C#: A simple sum.fsx" />
     <None Include="4 Comparing F# with C#: Sorting.fsx" />
     <None Include="5 Comparing F# with C#: Downloading a web page.fsx" />
+    <None Include="6 Four Key Concepts.fsx" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
 </Project>
