@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -52,6 +51,14 @@
     <None Include="4 Comparing F# with C#: Sorting.fsx" />
     <None Include="5 Comparing F# with C#: Downloading a web page.fsx" />
     <None Include="6 Four Key Concepts.fsx" />
+    <None Include="7 Conciseness.fsx" />
+    <None Include="8 Type inference.fsx" />
+    <None Include="9 Low overhead type definitions.fsx" />
+    <None Include="10 Using functions to extract boilerplate code.fsx" />
+    <None Include="11 Using functions as building blocks.fsx" />
+    <None Include="12 Pattern matching for conciseness.fsx" />
+    <None Include="13 Convenience.fsx" />
+    <None Include="14 Out-of-the-box behavior for types.fsx" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
 </Project>
