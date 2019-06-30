@@ -1,7 +1,8 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "WhyUseFsharp", "WhyUseFsharp\WhyUseFsharp.fsproj", "{323F73F3-933A-4997-93E8-66FF12A2502A}"
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WhyUseFsharp", "WhyUseFsharp\WhyUseFsharp.fsproj", "{323F73F3-933A-4997-93E8-66FF12A2502A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,5 +14,11 @@ Global
 		{323F73F3-933A-4997-93E8-66FF12A2502A}.Debug|x86.Build.0 = Debug|x86
 		{323F73F3-933A-4997-93E8-66FF12A2502A}.Release|x86.ActiveCfg = Release|x86
 		{323F73F3-933A-4997-93E8-66FF12A2502A}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61948085-BB75-45D9-A7C0-395C0050D291}
 	EndGlobalSection
 EndGlobal
