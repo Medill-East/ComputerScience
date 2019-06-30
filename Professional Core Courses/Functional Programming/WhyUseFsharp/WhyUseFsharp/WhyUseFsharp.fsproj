@@ -59,6 +59,9 @@
     <None Include="12 Pattern matching for conciseness.fsx" />
     <None Include="13 Convenience.fsx" />
     <None Include="14 Out-of-the-box behavior for types.fsx" />
+    <None Include="15 Functions as interfaces.fsx" />
+    <None Include="16 Partial Application.fsx" />
+    <None Include="17 Active patterns.fsx" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
 </Project>
