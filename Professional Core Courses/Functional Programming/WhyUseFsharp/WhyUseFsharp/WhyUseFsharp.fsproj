@@ -21,7 +21,8 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <ExternalConsole>true</ExternalConsole>
     <GenerateTailCalls>true</GenerateTailCalls>
@@ -62,6 +63,11 @@
     <None Include="15 Functions as interfaces.fsx" />
     <None Include="16 Partial Application.fsx" />
     <None Include="17 Active patterns.fsx" />
+    <None Include="18 Correctness.fsx" />
+    <None Include="19 Immutability.fsx" />
+    <None Include="20 Exhuastive pattern matching.fsx" />
+    <None Include="21 Using the type system to ensure correct code.fsx" />
+    <None Include="22 Worked example - Designing for correctness.fsx" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
 </Project>
