@@ -68,6 +68,8 @@
     <None Include="20 Exhuastive pattern matching.fsx" />
     <None Include="21 Using the type system to ensure correct code.fsx" />
     <None Include="22 Worked example - Designing for correctness.fsx" />
+    <None Include="23 Concurrency.fsx" />
+    <None Include="24 Asynchronous programming.fsx" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
 </Project>
