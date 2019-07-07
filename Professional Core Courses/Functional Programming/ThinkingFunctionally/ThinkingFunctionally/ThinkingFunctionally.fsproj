@@ -50,6 +50,7 @@
     <None Include="0 Thinking Functionally: introduction.fsx" />
     <None Include="1 Mathematical functions.fsx" />
     <None Include="2 Function Values and Simple Values.fsx" />
+    <None Include="3 How types work with functions.fsx" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
 </Project>
