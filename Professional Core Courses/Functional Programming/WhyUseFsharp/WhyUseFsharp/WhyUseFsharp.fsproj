@@ -70,6 +70,10 @@
     <None Include="22 Worked example - Designing for correctness.fsx" />
     <None Include="23 Concurrency.fsx" />
     <None Include="24 Asynchronous programming.fsx" />
+    <None Include="25 Meassages and Agents.fsx" />
+    <None Include="26 Functional Reactive Programming.fsx" />
+    <None Include="27 Completeness.fsx" />
+    <None Include="28 Seemless iteroperation with .NET libraries.fsx" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
 </Project>
