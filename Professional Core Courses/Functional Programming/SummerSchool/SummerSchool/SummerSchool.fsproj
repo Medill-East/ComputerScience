@@ -49,6 +49,7 @@
     <None Include="packages.config" />
     <None Include="FunctionalProgrammingCrashCourse.fsx" />
     <None Include="2 Get accustomed to F# syntax and precedence.fsx" />
+    <Compile Include="3.1 vec2d.fs" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
 </Project>
