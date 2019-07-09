@@ -35,7 +35,7 @@ printfn "reverseList of %A is %A" list (reverseApply list rev)
 /// /// /// 5.4 map
 let funcList = List.init list.Length (fun i -> rev)
 let mutable resultList = []
-let applylist (listFunc: (_ -> _) list) (testList:_) :_ = 
+let applylist (listFunc: ('a -> 'b) list) (testList:'a) :'b list = 
     //List.iter(List.map listFunc elm) funcList
     for i = 0 to funcList.Length - 1 do 
         let mutable tempList = List.map funcList.[i] testList
