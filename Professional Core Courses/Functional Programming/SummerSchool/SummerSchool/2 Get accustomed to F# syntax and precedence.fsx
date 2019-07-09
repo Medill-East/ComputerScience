@@ -7,6 +7,9 @@ printfn "%A * %A + %A = %A" a x b ( a * x + b )
 let y = a*x + b
 printfn "%A" y
 
+/// /// /// 2.2
+let a = 3 in let b = 4 in let x = 5 in printfn "%A * %A + %A" a x b 
+
 /// /// /// 2.3 - listing 4
 let firstName = "Jon"
 let lastName = "Sporring"
@@ -26,7 +29,7 @@ let aLop = 3
 let bLop = 4
 let N = 5
 for i = 0 to N do
-printfn "resultLop: %A" (f aLop bLop i)
+    printfn "resultLop: %A" (f aLop bLop i)
 
 // while loop
 let aWhile = 3
@@ -37,13 +40,13 @@ while NWhile < 5 do
     NWhile <- NWhile + 1
 
 /// /// /// 2.6
-printf "   "
+printf "    "
 let oneToTen = [1..10]
 for i = 0 to 9 do
     printf "%3d " oneToTen.[i]
 printfn ""    
 for i = 0 to 9 do 
-    printf "%3d" oneToTen.[i]
+    printf "%3d " oneToTen.[i]
     for j = 0 to 9 do
         printf "%3d " (oneToTen.[i] * oneToTen.[j])
 
