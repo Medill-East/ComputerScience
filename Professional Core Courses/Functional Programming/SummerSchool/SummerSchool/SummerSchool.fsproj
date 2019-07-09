@@ -54,6 +54,7 @@
     <Compile Include="3.3 vecNoTuples.fsi" />
     <None Include="4 Recursion in F#.fsx" />
     <None Include="5 Lists and patterns.fsx" />
+    <None Include="6 Individual hand-in assigment: Map, Fold, and Filter.fsx" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
 </Project>
