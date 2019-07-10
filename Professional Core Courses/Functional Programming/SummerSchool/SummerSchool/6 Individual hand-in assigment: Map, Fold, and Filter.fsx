@@ -10,12 +10,15 @@ let rec myMap (f: 'a -> 'b) (lst: 'a list) : 'b list =
 let rec myFold (f: 'b -> 'a -> 'b) (acc: 'b) (lst: 'a list) : 'b =
   //List.fold f acc lst
   match lst with
-    | [] -> []
+    | [] -> acc
+    // second time wrong
+    // [] -> []
     | elm::rest -> 
-        let result = myFold f acc rest @ (f acc elm)
+        // first time wrong
+        //let result = myFold f acc rest @ (f acc elm)
+        //result
+        let result = myFold f (f acc elm) rest
         result
-
-
 
 //let lst = [1..5]
 //let rev acc elm =

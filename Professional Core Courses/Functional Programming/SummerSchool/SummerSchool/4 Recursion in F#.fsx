@@ -29,12 +29,9 @@ printfn "sumWhile %d = %d" sumN sumWhile
 
 // match with
 //let rec gcd a b =
-//    //match b with
-//        //| n when n <> 0 -> gcd n (a%b)
-//        //| 0 -> a
-//    match a b with
-//        | t n when (t<>n && n>0) -> gcd b (a%b)
+//    match b with
 //        | 0 -> a
+//        | n -> gcd n (a%b)
 
 //printfn "gcd %d %d = %d" 8 2 (gcd 8 2)
 
@@ -47,5 +44,9 @@ let rec gcd a b =
         a
 printfn "gcd %d %d = %d" 8 2 (gcd 8 2)
 printfn "gcd %d %d = %d" 2 8 (gcd 2 8)
+printfn "gcd %d %d = %d" 3 7 (gcd 3 7)
+printfn "gcd %d %d = %d" 21 3 (gcd 21 3)
+
+
 
   
