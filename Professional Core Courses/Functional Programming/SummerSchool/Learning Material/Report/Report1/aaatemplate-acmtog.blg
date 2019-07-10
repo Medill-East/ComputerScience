@@ -51,6 +51,8 @@ Warning--empty publisher in Schubert01theexperience
 Warning--empty address in Schubert01theexperience
 Warning--no number and no volume in Seligman00positivepsychology:
 Warning--empty address in slater1995influence
+Warning--empty publisher in sporring2019
+Warning--empty address in sporring2019
 Warning--empty publisher in sutherland1968head
 Warning--empty address in sutherland1968head
 Warning--no number and no volume in van2004measuring
@@ -65,45 +67,45 @@ Warning--no number and no volume in 杨珍2006时距估计范式与方法效应�
 Warning--page numbers missing in both pages and numpages fields in 杨珍2006时距估计范式与方法效应的实验研究
 Warning--empty school in 莫文2008心理学实验中的各种效应及解决办法
 Warning--unusual to have number, but no volume, for 赵雪2012时距知觉研究综述
-You've used 77 entries,
+You've used 78 entries,
             5706 wiz_defined-function locations,
-            1755 strings with 28838 characters,
-and the built_in function-call counts, 84057 in all, are:
-= -- 12328
-> -- 2973
+            1759 strings with 28894 characters,
+and the built_in function-call counts, 84688 in all, are:
+= -- 12385
+> -- 2993
 < -- 0
-+ -- 912
-- -- 1054
-* -- 5593
-:= -- 8574
-add.period$ -- 394
-call.type$ -- 77
-change.case$ -- 502
-chr.to.int$ -- 76
-cite$ -- 124
-duplicate$ -- 6420
-empty$ -- 4734
-format.name$ -- 1289
-if$ -- 21529
++ -- 916
+- -- 1062
+* -- 5631
+:= -- 8655
+add.period$ -- 399
+call.type$ -- 78
+change.case$ -- 507
+chr.to.int$ -- 77
+cite$ -- 127
+duplicate$ -- 6479
+empty$ -- 4778
+format.name$ -- 1297
+if$ -- 21665
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 278
-newline$ -- 649
-num.names$ -- 615
-pop$ -- 2752
+missing$ -- 280
+newline$ -- 656
+num.names$ -- 623
+pop$ -- 2783
 preamble$ -- 1
-purify$ -- 886
+purify$ -- 896
 quote$ -- 0
-skip$ -- 2344
+skip$ -- 2366
 stack$ -- 0
-substring$ -- 5797
-swap$ -- 685
+substring$ -- 5835
+swap$ -- 688
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1432
-warning$ -- 47
-while$ -- 646
+type$ -- 1447
+warning$ -- 49
+while$ -- 654
 width$ -- 0
-write$ -- 1344
+write$ -- 1359
 (There were 3 error messages)

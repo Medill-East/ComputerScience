@@ -776,6 +776,14 @@
 \newblock
 
 
+\bibitem[\protect\citeauthoryear{Sporring}{Sporring}{2019}]%
+        {sporring2019}
+\bibfield{author}{\bibinfo{person}{Jon Sporring}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \bibinfo{booktitle}{{\em Learning to Program with F\#}}.
+\newblock
+
+
 \bibitem[\protect\citeauthoryear{Steuer}{Steuer}{1992}]%
         {steuer1992defining}
 \bibfield{author}{\bibinfo{person}{Jonathan Steuer}.}
