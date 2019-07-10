@@ -20,14 +20,6 @@ let rec myFold (f: 'b -> 'a -> 'b) (acc: 'b) (lst: 'a list) : 'b =
         let result = myFold f (f acc elm) rest
         result
 
-//let lst = [1..5]
-//let rev acc elm =
-//    let res = elm :: acc
-//    printfn "acc = %A, elm = %A, res = %A" acc elm res
-//    res
-//printfn "rev %A = %A" lst (List.fold rev [] lst)
-
-
 // filter f [a1; ...; an] = [ai; aj; ak ...], where f ai = true etc.,
 // Exercise: replace the library function here with a recursive implementation for filter!
 let rec myFilter (p: 'a -> bool) (lst: 'a list) : 'a list =

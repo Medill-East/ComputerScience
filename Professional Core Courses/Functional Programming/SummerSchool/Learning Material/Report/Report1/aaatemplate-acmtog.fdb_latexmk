@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex aaatemplate-acmtog"] 1562725857 "aaatemplate-acmtog.aux" "aaatemplate-acmtog.bbl" "aaatemplate-acmtog" 1562725885
+["bibtex aaatemplate-acmtog"] 1562727536 "aaatemplate-acmtog.aux" "aaatemplate-acmtog.bbl" "aaatemplate-acmtog" 1562727549
   "/usr/local/texlive/2017/texmf-dist/bibtex/bst/acmart/ACM-Reference-Format.bst" 1493069147 93993 94d2174e63fb9cd866ec1d0b392ce46c ""
-  "aaatemplate-acmtog.aux" 1562725880 18045 0ccb09561460df51afdf5123d6e817f4 ""
+  "aaatemplate-acmtog.aux" 1562727547 17774 bd2590a35fc0038d9997cb4c869687e3 ""
   "aaatemplate.bib" 1560707538 33183 53099ef9aa2c0bcf3d15bb4a27ea5bd5 ""
   (generated)
   "aaatemplate-acmtog.bbl"
   "aaatemplate-acmtog.blg"
-["pdflatex"] 1562725858 "aaatemplate-acmtog.tex" "aaatemplate-acmtog.pdf" "aaatemplate-acmtog" 1562725885
+["pdflatex"] 1562727537 "aaatemplate-acmtog.tex" "aaatemplate-acmtog.pdf" "aaatemplate-acmtog" 1562727549
   "/usr/local/texlive/2017/texmf-dist/tex/generic/iftex/iftex.sty" 1480098815 2560 68a7cdbd7a5424fa22f4176117a417e9 ""
   "/usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1480098815 1458 43ab4710dc82f3edeabecd0d099626b2 ""
   "/usr/local/texlive/2017/texmf-dist/tex/generic/kastrup/binhex.tex" 1480098815 2553 4b99aa9667b708dd355926023d705446 ""
@@ -124,14 +124,14 @@
   "aaafiles/environments_b.jpg" 1554969306 96080 1d6c3e2b0dc1201d8bd228401d1bb7a7 ""
   "aaafiles/linedeviation.jpg" 1560792546 102712 5092cf4377986080b32375c4bffe27e7 ""
   "aaafiles/matrix.jpg" 1560772965 150576 6f8d2e6920e1665086a39f0e93a923d1 ""
-  "aaatemplate-acmtog.aux" 1562725880 18045 0ccb09561460df51afdf5123d6e817f4 ""
-  "aaatemplate-acmtog.bbl" 1562725857 41374 41c16e5dd78afb32b138210510111152 "bibtex aaatemplate-acmtog"
-  "aaatemplate-acmtog.out" 1562725880 2492 8afd6143c15064632e0c7bcf4be3ee40 ""
-  "aaatemplate-acmtog.tex" 1562725789 132978 bbd96557560f71fb2a01fa995963a283 ""
-  "comment.cut" 1562725879 527 38b0116cfb745fd6ce166fd55d9270cf ""
+  "aaatemplate-acmtog.aux" 1562727547 17774 bd2590a35fc0038d9997cb4c869687e3 ""
+  "aaatemplate-acmtog.bbl" 1562727537 41374 41c16e5dd78afb32b138210510111152 "bibtex aaatemplate-acmtog"
+  "aaatemplate-acmtog.out" 1562727547 2407 04a59792e46c6bbb48b155689d65abf3 ""
+  "aaatemplate-acmtog.tex" 1562727523 133069 5e69daff56801359364c7a942bb2d762 ""
+  "comment.cut" 1562727547 527 38b0116cfb745fd6ce166fd55d9270cf ""
   (generated)
-  "aaatemplate-acmtog.pdf"
   "aaatemplate-acmtog.log"
+  "aaatemplate-acmtog.pdf"
+  "aaatemplate-acmtog.out"
   "aaatemplate-acmtog.aux"
   "comment.cut"
-  "aaatemplate-acmtog.out"
