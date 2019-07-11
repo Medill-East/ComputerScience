@@ -1,8 +1,16 @@
-﻿let testString = "a"
+﻿let testString = "aB1cdEFg09-"
 
-/// /// /// 7.1
+/// /// /// 7.1 readfile
 
-
+let filename = "readFile.fsx"
+let line = 
+  try
+    let reader = System.IO.File.OpenText filename
+    reader.ReadToEnd ()
+  with
+    _ -> "" // The file cannot be read, so we return an empty string
+    
+printfn "%s" line
 
 
 /// /// /// 7.2 converts
@@ -11,38 +19,11 @@ let rec convertText (src:string) : string =
     match lowerSRC with
     | "" -> ""
     | elm -> 
-        if ('a' <= System.Convert.ToChar(elm) && System.Convert.ToChar(elm) <= 'z')
+        if ('a' <= elm.[0] && elm.[0] <= 'z')
         then 
-            elm + (convertText (lowerSRC.Remove (lowerSRC.IndexOf elm)))
+            elm.[0].ToString() + (convertText elm.[1..])
         else
-            convertText (lowerSRC.Remove (lowerSRC.IndexOf elm))
-
-    let processFun elm:string = 
-        if ('a' <= System.Convert.ToChar(elm) && System.Convert.ToChar(elm) <= 'z')
-        then 
-            elm + (convertText (lowerSRC.Remove (lowerSRC.IndexOf elm)))
-        else
-            convertText (lowerSRC.Remove (lowerSRC.IndexOf elm))
-        
+            convertText elm.[1..]
+            
 printfn "convert %A to %A" testString (convertText testString)
 
-
-let rec myFilter (p: 'a -> bool) (lst: 'a list) : 'a list =
-  //List.filter p lst
-  match lst with
-  | [] -> []
-  | elm::rest -> 
-    if (p elm)
-    then 
-        [elm] @ (myFilter p rest)
-    else 
-        myFilter p rest
-
-// Exercise: replace the library function here with a recursive implementation for fold!
-let rec myFold (f: 'b -> 'a -> 'b) (acc: 'b) (lst: 'a list) : 'b =
-  //List.fold f acc lst
-  match lst with
-    | [] -> acc
-    | elm::rest -> 
-        let result = myFold f (f acc elm) rest
-        result
