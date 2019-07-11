@@ -58,6 +58,11 @@
     <None Include="7 Random Text.fsx" />
     <None Include="readFile.txt" />
     <None Include="7.1 ReadFile.fsx" />
+    <Compile Include="sampleAssignment.fsx" />
+    <None Include="7.2 ConvertText.fsx" />
+    <None Include="7.3 Histogram.fsx" />
+    <None Include="7.4 Combine.fsx" />
+    <None Include="test.fsx" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
 </Project>
