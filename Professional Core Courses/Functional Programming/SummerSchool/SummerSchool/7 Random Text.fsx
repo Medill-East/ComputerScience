@@ -162,6 +162,20 @@ printfn "occurence of %A is %A" storyContent (cooccurrence storyContent)
 
 /// /// /// /// /// 7.6 fstOrderMarkovModel
 
+/// /// /// /// /// 1 convert cooccurrence from int list list to int list = cooccurrenceList
+
+/// /// /// /// /// 2 make cooccurrence as argument of randomList histogram
+
+let rec concat lst = 
+    match lst with
+    | elm::rest -> elm :: (concat rest)
+    | [] -> []
+let cooccurenceList = concat (cooccurrence storyContent)
+let storyContent = "“LITTLE CLAUS AND BIG CLAUS a translation of hans christian andersen’s ’lille claus og store claus’ by jean hersholt.
+
+In a village there lived two men who had the self-same name. Both were named Claus. But one of them owned four horses, and the other owned only one horse; so to distinguish between them people called the man who had four horses Big Claus, and the man who had only one horse Little Claus. Now I’ll tell you what happened to these two, for this is a true story.”
+"
+printfn "concat %A = %A" (cooccurrence storyContent) (concat (cooccurrence storyContent))     
 
 
 let fstOrderMarkovModel (cooc : int list list) (len:int) : string = 

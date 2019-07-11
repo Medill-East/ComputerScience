@@ -64,7 +64,7 @@
     <None Include="7.4 Combine.fsx" />
     <None Include="test.fsx" />
     <Compile Include="7.5 Cooccurrence.fsx" />
-    <None Include="7.6 fstOrderMarkovModel.fsx" />
+    <None Include="7.6 fsrOrderMarkovModel.fsx" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
 </Project>
