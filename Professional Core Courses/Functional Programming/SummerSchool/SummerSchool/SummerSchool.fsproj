@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -54,7 +53,7 @@
     <Compile Include="3.3 vecNoTuples.fsi" />
     <None Include="4 Recursion in F#.fsx" />
     <None Include="5 Lists and patterns.fsx" />
-    <None Include="6 Individual hand-in assigment: Map, Fold, and Filter.fsx" />
+    <None Include="6 Individual hand-in assignment.fsx" />
     <None Include="7 Random Text.fsx" />
     <None Include="readFile.txt" />
     <None Include="7.1 ReadFile.fsx" />
