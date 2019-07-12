@@ -1,4 +1,6 @@
-﻿/// 7.1 Readfile
+﻿open System.Diagnostics
+
+/// 7.1 Readfile
 let printErrorMessage () =
     printfn "Program Input should be 'readfile filename'"
 
@@ -98,14 +100,31 @@ let randomString (hist : int list) (len : int) : string =
   appendRandomString hist len ""
 
 /// 7.6 generates a random string of length len, whose character pairs are distributed according to a user specified cooccurrence histogram cooc
+let rec nextrandomchar (p:int)(len:int)(cooc:int list list)(str:string):string = 
+  let charprobe = 'a'+char p
+  if charprobe <= 'z' then
+    if str.Length < len then
+      if str.[str.Length-1] = charprobe then 
+          let str1 = (str+(randomString (cooc.[p]) 1))
+          (str1+(nextrandomchar 0 len cooc str1))
+      else
+          (str+(nextrandomchar (p+1) len cooc str))
+    else
+      str
+  else
+    let str1 = str + (randomString (List.map (fun (x:int list) -> x.[0]) cooc) 1)
+    (str1 + (nextrandomchar 0 len cooc str1))
+
 let fstOrderMarkovModel (cooc:int list list) (len:int) : string =
-    let strLengthlist = List.map (fun x -> (float x) ) (List.map (List.sum) cooc)
-    let strLengthSum = List.sum strLengthlist
-    let ratiolist = List.map (fun x -> x/strLengthSum) strLengthlist
-    let randomStringAlt (hist: int list):string = randomString hist (int ((float (List.sum (hist))/strLengthSum)*(float len)))
-    let strlist = List.map (randomStringAlt) cooc
-    let composestr (acc:string) (elm:string):string = acc + elm
-    List.fold composestr "" strlist
+    //let strLengthlist = List.map (fun x -> (float x) ) (List.map (List.sum) cooc)
+    //let strLengthSum = List.sum strLengthlist
+    //let ratiolist = List.map (fun x -> x/strLengthSum) strLengthlist
+    //let randomStringAlt (hist: int list):string = randomString hist (int ((float (List.sum (hist))/strLengthSum)*(float len)))
+    //let strlist = List.map (randomStringAlt) cooc
+    //let composestr (acc:string) (elm:string):string = acc + elm
+    //List.fold composestr "" strlist
+    let str = randomString (List.map (fun (x:int list) -> x.[0]) cooc) 1
+    (nextrandomchar 0 len cooc str)
 
 
 [<EntryPoint>]
@@ -121,13 +140,13 @@ let main (paramList : string[]) : int =
                 let convertedstr = convertText str
                 printfn "convertedstr : \n%A" convertedstr
                 printfn "histogram : \n%A" (histogram convertedstr)
-                let newstring1 = randomString (histogram convertedstr) (convertedstr.Length)
-                printfn "new random string1 : \n%A" newstring1
-                printfn "new histogram : \n%A" (histogram newstring1)
+                //let newstring1 = randomString (histogram convertedstr) (convertedstr.Length)
+                //printfn "new random string1 : \n%A" newstring1
+                //printfn "new histogram : \n%A" (histogram newstring1)
                 let strcooc = (cooccurrence convertedstr)
                 printfn "str's cooc: \n%A" strcooc
-                let newcooc = (cooccurrence newstring1)
-                printfn "new random string1's cooc : \n%A" (cooccurrence newstring1)
+                //let newcooc = (cooccurrence newstring1)
+                //printfn "new random string1's cooc : \n%A" (cooccurrence newstring1)
                 let newstring2 = (fstOrderMarkovModel strcooc convertedstr.Length)
                 printfn "new random string2 :\n%A" newstring2
                 printfn "new random string2's cooc : \n%A" (cooccurrence newstring2)
