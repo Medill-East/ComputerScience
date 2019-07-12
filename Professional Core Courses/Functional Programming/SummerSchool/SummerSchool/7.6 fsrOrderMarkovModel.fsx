@@ -65,27 +65,32 @@ let cooccurrence (src:string):int list list =
   countchar src 'a'
 printfn "former cooc : \n %A" (cooccurrence a)
 
-let strLengthFunc (charSum:int) (cooccurSum:int) (targetLength:int) = (charSum/cooccurSum) * targetLength
-let rec strLengthList (lst:int list list) : (int list) = List.map (List.sum) (lst)
-let strLengthRatio (lst:int list) (lengthSum:int) : (int list) = List.map (fun x -> x/lengthSum) lst
-
-printfn "strLength: %A" (strLengthList (cooccurrence a))
-printfn "strLengthSum: %A" (List.sum (strLengthList (cooccurrence a)))
-
-printfn "strLengthRatio: %A" (strLengthRatio (strLengthList (cooccurrence a)) (List.sum (strLengthList (cooccurrence a))))
 
 
+//let strLengthlist = List.map (fun x -> (float x) ) (List.map (List.sum) (cooccurrence a))
+//let strLengthSum = List.sum strLengthlist
+//let ratiolist = List.map (fun x -> x/strLengthSum) strLengthlist
 
-let randomStringAlt (hist: int list):string = randomString hist (a.Length/26)
-let strlist = List.map (randomStringAlt) (cooccurrence a)
+//printfn "strLengthlist: %A" strLengthlist
+//printfn "strLengthSum: %f" strLengthSum
+//printfn "strLengthRatio: %A" ratiolist
+//printfn "each length : %A" List.map (fun x -> int (x/strLengthSum)
+
+//let randomStringAlt (hist: int list):string = randomString hist (int ((float (List.sum (hist))/strLengthSum)*(float a.Length)))
+//let strlist = List.map (randomStringAlt) (cooccurrence a)
 //printfn "%A" strlist
-let composestr (acc:string) (elm:string):string = acc + elm
-let randomstr = List.fold composestr "" strlist
-printfn "present cooc : \n%A" (cooccurrence randomstr)
-printfn "%A" randomstr
+//let composestr (acc:string) (elm:string):string = acc + elm
+//let randomstr = List.fold composestr "" strlist
+//printfn "present cooc : \n%A" (cooccurrence randomstr)
+//printfn "%A" randomstr
 
 let fstOrderMarkovModel (cooc:int list list) (len:int) : string =
-    let randomStringAlt (hist: int list):string = randomString hist len
-    List.fold composestr "" (List.map (randomStringAlt) cooc)
-
-printfn "test: \n %A" (fstOrderMarkovModel (cooccurrence randomstr) (randomstr.Length/26))
+    let strLengthlist = List.map (fun x -> (float x) ) (List.map (List.sum) cooc)
+    let strLengthSum = List.sum strLengthlist
+    let ratiolist = List.map (fun x -> x/strLengthSum) strLengthlist
+    let randomStringAlt (hist: int list):string = randomString hist (int ((float (List.sum (hist))/strLengthSum)*(float len)))
+    let strlist = List.map (randomStringAlt) cooc
+    let composestr (acc:string) (elm:string):string = acc + elm
+    List.fold composestr "" strlist
+printfn "test: \n %A" (fstOrderMarkovModel (cooccurrence a) (a.Length))
+printfn "present cooc : \n%A" (cooccurrence (fstOrderMarkovModel (cooccurrence a) (a.Length)))
