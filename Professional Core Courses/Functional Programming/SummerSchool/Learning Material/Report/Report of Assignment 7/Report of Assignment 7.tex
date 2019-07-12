@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{geometry}
 
-\geometry{a4paper,left=2cm,right=2cm,top=1cm,bottom=1.5cm}
+\geometry{a4paper,left=2cm,right=2cm,top=1cm,bottom=1.25cm}
 \usepackage{xeCJK, fontspec, xunicode, xltxtra}  
 \usepackage[colorlinks,
             linkcolor=blue,
@@ -74,13 +74,13 @@
 
 \section{Preface}
 
-This is a \LaTeX report written by Haodong Liao and Liyuan Zhang, students of UESTC who participated in the summer school of UCPH. More codes of this summer school are at this \href{https://github.com/Medill-East/ComputerScience/tree/master/Professional%20Core%20Courses/Functional%20Programming/SummerSchool}{repository}.
+This was a \LaTeX report written by Haodong Liao and Liyuan Zhang, students of UESTC who participated in the summer school of UCPH. More codes of this summer school were at this \href{https://github.com/Medill-East/ComputerScience/tree/master/Professional%20Core%20Courses/Functional%20Programming/SummerSchool}{repository}.
 
 \section{Introduction}
 
-A string in F\# is a sequence of characters\footnote[1]{https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/lists}, and some of the string functions are similar to list functions, after the practicing of the list function, it is time to move on.
+A string in F\# was a sequence of characters\footnote[1]{https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/lists}, and some of the string functions were similar to list functions, after the practicing of the list function, it was time to move on.
 
-In this assignment, we worked with simple text processing and met the requirements of analysing and generating some text according to statistics. In detail, we used pattern-matching and explicit type definition to create our own recursive functions, besides, we uesd powerful List-library functions to read, convert, analyze and generate target text.
+In this assignment, we worked with simple text processing and met the requirements of analyzing and generating some text according to statistics. In detail, we used pattern-matching and explicit type definition to create our own recursive functions, besides, we used powerful List-library functions to read, convert, analyze and generate target text.
 
 % All in all, the results I achieved were as following:
 
@@ -105,7 +105,6 @@ In this assignment, we worked with simple text processing and met the requiremen
 % \lstset{language=Csh}
 \begin{lstlisting}
 readText: filename:string -> string
-
 // readFile.fsx
 let filename = "readFile.fsx"
 let line = 
@@ -114,13 +113,12 @@ let line =
     reader.ReadToEnd ()
   with
     _ -> "" // The file cannot be read, so we return an empty string
-    
 printfn "%s" line
 \end{lstlisting}
 
 In this sub-assignment, we needed to convert \emph{readFile.fsx} into a more flexible function which reads the content of any text file.
 
-Referd to the input processing code in assignment 6, there were two branches needed to be handled, one was to set the entrypoint of our code, the other was to change the fixed argument to a flexible one so that the function could read the content of any text file. The key part of the pseudocode is shown as following:
+Referred to the input processing code in assignment 6, there were two branches needed to be handled, one was to set the entry point of our code, the other was to change the fixed argument to a flexible one so that the function could read the content of any text file. The key part of the pseudocode was shown as following:
 
 \begin{lstlisting}
 [<EntryPoint>]
@@ -154,7 +152,7 @@ let convertText inputString =
 histogram: src:string -> int list
 \end{lstlisting}
 
-We needed to counts occurrences of each lower-case letter of the English alphabet in a string and returns a list in this sub-assignment. According to \cite{sporring2019}, there was a \emph{String.filter} function similar to \emph{List.filter} function, we used it to filter the specific letter of the string and counts the length of it to get the occurences. The key part of the pseudocode is shown as following:
+We needed to count occurrences of each lower-case letter of the English alphabet in a string and returned a list in this sub-assignment. According to \cite{sporring2019}, there was a \emph{String.filter} function similar to \emph{List.filter} function, we used it to filter the specific letter of the string and count the length of it to get the occurrences. The key part of the pseudocode was shown as following:
 
 \begin{lstlisting}
 let countchar (src:string)(letter:char) = 
@@ -172,7 +170,7 @@ let histogram (src:string): int list = (countchar src 'a')
 randomString: hist：int list -> len:int -> string
 \end{lstlisting}
 
-The requirement of this sub-assignment was to change the given program and generate a string of a given length, and contains random characters distributed according to a given histogram which used our own functions. The flow of the program was shown as following:
+The requirement of this sub-assignment was to change the given program and generate a string of a given length and contained random characters distributed according to a given histogram which used our own functions. The flow of the program was shown as following:
 
 \begin{lstlisting}
 step1 - Read the target text file and saved it
@@ -185,7 +183,7 @@ step4 - Generated a new random string according to the histogram
 
 \subsubsection{Get Cooccurrence}
 
-In this sub-assignment, we needed to count occurences of each pairs of lower-case letter of the English alphabet in a string and return a list of lists. Our solution was to use double recursion and process the letter in each pair seperately. The key part of the pseudocode is shown as following:
+In this sub-assignment, we needed to count occurrences of each pair of lower-case letter of the English alphabet in a string and return a list of lists. Our solution was to use double recursion and process the letter in each pair separately. The key part of the pseudocode was shown as following:
 
 \begin{lstlisting}
 // count the occurrence of each pair
@@ -197,19 +195,16 @@ let countnum =
       ignore current and sum recursively
   else
     return 0      
-
 // handle the second letter    
 let countcharpair = 
   if the second letter <= 'z' then
     sum the occurrence and process the left string recursively
   else return an empty list   
-
 // process the first letter
 let countchar = 
   if the first letter <= 'z' then
     process the second letter and process the left string recursively
   else return an empty list    
-
 // call function from here
 let cooccurrence (src:string) = countchar src 'a'
 \end{lstlisting}
@@ -236,7 +231,6 @@ step4 - Generate a random string of length len
 Our implementation of \textbf{readText} function was as follows:
 
 \begin{lstlisting}
-// 7.1
 let printErrorMessage () =
     printfn "Program Input should be 'readfile filename'"
 
@@ -249,7 +243,6 @@ let readText (filename:string) : string =
           _ -> "" // The file cannot be read, so we return an empty string
     printfn "%s" line
     line
-
 [<EntryPoint>]
 let main (paramList : string[]) : int = 
     if paramList.Length <> 2 then
@@ -265,13 +258,12 @@ let main (paramList : string[]) : int =
         1    
 \end{lstlisting}
 
-As it shows, the key of this function was to match the argument list, the first argument should be the command 'readfile', and the second argument was the name of file.
+As it showed, the key to this function was to match the argument list, the first argument should be the command 'readfile', and the second argument was the name of a  file.
 
 Implementation of \textbf{convertText} function was as follows:
 
 % \lstset{language=Csh}
 \begin{lstlisting}
-// 7.2
 let rec convertText (src:string) : string = 
     let lowerSRC = src.ToLower()
     match lowerSRC with
@@ -290,7 +282,6 @@ Implementation of \textbf{histogram} function was as follows:
 
 % \lstset{language=Csh}
 \begin{lstlisting}
-// 7.3
 let rec countchar (src:string)(letter:char): int list = 
   if letter >= 'a' && letter <= 'z' then 
     ((String.filter (fun char -> char=letter) src).Length)::
@@ -301,7 +292,7 @@ let histogram (src:string): int list = (countchar src 'a')
 
 This function was the key to solving the following problems.
 
-\textbf{Assignment 7.4} was a summary of the previous three assignments, and the key part of implementation of it was as follows:
+\textbf{Assignment 7.4} was a summary of the previous assignments, and the key part to it was as follows:
 % \lstset{language=Csh}
 \begin{lstlisting}
 /// step1 readfile
@@ -312,7 +303,7 @@ let convertRes = convertText str
 let hist = histogram convertRes
 let alphabet = List.init hist.Length (fun i -> 'a' + char i)
 printfn "A histogram:\n %A" (List.zip alphabet hist)
-/// 7.4 step4 generages a new random string
+/// step4 generages a new random string
 let ranStr = randomString hist convertRes.Length
 printfn "A random string: %s" ranStr
 let newHist = histogram ranStr
@@ -325,7 +316,6 @@ Implementation of \textbf{cooccurrence} function was as follows:
 
 % \lstset{language=Csh}
 \begin{lstlisting}
-// 7.5
 let rec countnum (src:string) (charpair:string):int =
   if src.Length >=2 then
     if src.[0..1] = charpair then
@@ -339,7 +329,6 @@ let rec countchapair (src:string) (letter1:char) (letter2:char):int list =
     let charpair = string letter1 + string letter2
     (countnum src charpair)::(countcharpair src letter1 (letter2+char 1))
   else []
-
 let rec countchar (src:string) (letter1:char):int list list = 
   if letter1 <= 'z' then
     (countcharpair src letter1 'a')::(countchar src (letter1 + char 1))
@@ -348,9 +337,9 @@ let cooccurrence (src:string):int list list =
   countchar src 'a'
 \end{lstlisting}
 
-This was a difficult problem for us, and the key to the solusion was the idea of 'divide and conquer', if we could not process the pair of letters at a time, we handle the letter of it separately.
+This was a difficult problem for us, and the key to the solution was the idea of 'divide and conquer'. If we could not process the pair of letters at a time, we handle the letter of it separately.
 
-\textbf{Assignment 7.6} was a summary of all the previous assignments, and the key part of implementation of it was as follows:
+\textbf{Assignment 7.6} was a summary of all the previous assignments, and the key part of the implementation of it was as follows:
 % \lstset{language=Csh}
 \begin{lstlisting}
 let fstOrderMarkovModel (cooc:int list list) (len:int):string =
@@ -368,17 +357,22 @@ printfn "present cooc : \n %A"
   (cooccurrence (fstOrderMarkovModel (cooccurrence a) (a.Length)))
 \end{lstlisting}
 
-This was another difficult assignment for us, the main challenge was to arrange the text properly so the occurrence was similar. We tried to generate a new character according to the letter before the current letter, but things just did not worked well for reason we did not figured out, then we tried with the weight of the pair based on the proportion of the sum of the single letters to the sum of the occurrences of all the letters, for example:
+This was another difficult assignment for us, the main challenge was to arrange the text properly so the occurrence was similar. We tried to generate a new character according to the letter before the current letter, but things just did not work well for reason we did not figure out, then we tried with the weight of the pair based on the proportion of the sum of the single letters to the sum of the occurrences of all the letters
+ % for example:
+% \begin{math}
+% $$Weight_{'a..'} = \frac{Occurrence of 'aa' to 'az'}{Occurrence of 'aa' to 'zz'}$$
+% \end{math}
+. In this way, when there was a given length, the length of each character list (like 'aa'..'az') would be its weight timed the given length, such as:
 \begin{math}
-$$Weight_{'a'} = \frac{Occurrence of 'aa' to 'az'}{Occurrence of 'aa' to 'zz'}$$
+$$Length_{'aa'to'az'} = \frac{Occurrence_{'aa' to 'az'}}{Occurrence_{'aa' to 'zz'}} * (Given Length)$$
 \end{math}
-. In this way, when there was a given length, the length of each character list (like 'aa'..'az') would be as the weight of all character list, so that we could generate a random string which had a similar distribution but different content.
+, so that we could generate a random string which had a similar distribution but different content.
 
 \section{Evaluation}
 
 The testing environment was macOS Mojave 10.14.5 system with iTerm and Microsoft (R) F\# Compiler version 4.1.
 
-We combined all the assignment into a single program, complied and tested it with parameter \emph{readfile littleClausAndBigClaus.txt}, and the key part of result (because it was to long) were showed as following:
+We combined all the assignment into a single program, compiled and tested it with parameter \emph{readfile littleClausAndBigClaus.txt}. Output of it included \emph{content of target file}, \emph{converted string of original string}, \emph{histogram of original string}, \emph{random string of single character}, \emph{histogram of random single character}, \emph{cooc of original string}, \emph{cooc of random single character}, \emph{random string of character pairs} and \emph{cooc of random character pairs}. Part of results (because it was too long) were shown as following (the complete results could be seen at \href{https://github.com/Medill-East/ComputerScience/blob/master/Professional%20Core%20Courses/Functional%20Programming/SummerSchool/Learning%20Material/Report/Hand-in/2/Result/Result.txt}{result}):
 
 \begin{figure}[htbp]
       \centering
@@ -387,44 +381,44 @@ We combined all the assignment into a single program, complied and tested it wit
       \label{fig:inputandread}
 \end{figure}
 
-\begin{figure}[htbp]
-      \centering
-      \includegraphics[width=\linewidth]{convert}
-      \caption{Testing of convertText function}
-      \label{fig:convert}
-\end{figure}
+% \begin{figure}[htbp]
+%       \centering
+%       \includegraphics[width=\linewidth]{convert}
+%       \caption{Testing of convertText function}
+%       \label{fig:convert}
+% \end{figure}
+
+% \begin{figure}[htbp]
+%       \centering
+%       \includegraphics[width=\linewidth]{histogramandnewstring1}
+%       \caption{Testing of histogram and randomString function}
+%       \label{fig:histogramandnewstring1}
+% \end{figure}
+
+% \begin{figure}[htbp]
+%       \centering
+%       \includegraphics[width=\linewidth]{newhistogram1andoldcooc}
+%       \caption{Histogram and Cooc of Generate String of randomString function}
+%       \label{fig:newhistogram1andoldcooc}
+% \end{figure}
 
 \begin{figure}[htbp]
       \centering
-      \includegraphics[width=\linewidth]{histogramandnewstring1}
-      \caption{Testing of histogram and randomString function}
-      \label{fig:histogramandnewstring1}
-\end{figure}
-
-\begin{figure}[htbp]
-      \centering
-      \includegraphics[width=\linewidth]{newhistogram1andoldcooc}
-      \caption{Histogram and Cooc of Generate String of randomString function}
-      \label{fig:newhistogram1andoldcooc}
-\end{figure}
-
-\begin{figure}[htbp]
-      \centering
-      \includegraphics[width=\linewidth]{randomstring2}
+      \includegraphics[width=\linewidth]{coocoforiginalstring}
       \caption{Testing of fstOrderMarkovModel function}
-      \label{fig:randomstring2}
+      \label{fig:coocoforiginalstring}
 \end{figure}
 
 \begin{figure}[htbp]
       \centering
-      \includegraphics[width=\linewidth]{newrandomstring2cooc}
+      \includegraphics[width=\linewidth]{coocofcharacterpairs}
       \caption{Coocurrence of fstOrderMarkovModel function}
-      \label{fig:newrandomstring2cooc}
+      \label{fig:coocofcharacterpairs}
 \end{figure}
 
 \section{Conclusion}
 
-In this assignment, I implemented the \emph{myFold} and \emph{myFilter} functions with my own recursive method. I stuck at the beginning of my writing, but things went smoothly when I rearranged my thoughts and wrote down the pseudocode. It's easy to get bogged down in the details of a program, but we should take a top-down functional programming approach and thinking more about what to do than how to do it.
+In this assignment, we worked with simple text processing and met the requirements of analyzing and generating target text according to statistics. It was time-consuming of thinking about the recursive function and avoiding to use things like 'for loop' when we were stuck, it was challenging but this assignment made us get more familiar with F\# and functional programming indeed. It was our pleasure to have teachers like Prof.Sporring and we believed that we had a good time. Many thanks!
 
 
 %\renewcommand\refname{Reference\\
