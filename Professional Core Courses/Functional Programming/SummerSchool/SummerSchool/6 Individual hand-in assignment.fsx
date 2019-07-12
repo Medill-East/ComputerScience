@@ -1,4 +1,4 @@
-// map f [a1; ...; an] = [f a1; ..., f an]
+﻿// map f [a1; ...; an] = [f a1; ..., f an]
 // An implementation alternative to the library function List.map
 let rec myMap (f: 'a -> 'b) (lst: 'a list) : 'b list =
   match lst with
