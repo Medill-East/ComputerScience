@@ -49,6 +49,8 @@
     <None Include="packages.config" />
     <None Include="practice1_work with higher order functions.fsx" />
     <None Include="Calculator example.fsx" />
+    <None Include="Assignment4.fsx" />
+    <Compile Include="assignment5.fsx" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
 </Project>
