@@ -51,6 +51,9 @@
     <None Include="Calculator example.fsx" />
     <None Include="Assignment4.fsx" />
     <Compile Include="assignment5.fsx" />
+    <Compile Include="assignment5_v2.fsx" />
+    <Compile Include="2016060104002_2017060103023.fsx" />
+    <Compile Include="assignment6.fsx" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
 </Project>

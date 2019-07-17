@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{geometry}
 
-\geometry{a4paper,left=2cm,right=2cm,top=1cm,bottom=1.5cm}
+\geometry{a4paper,left=2cm,right=2cm,top=0.75cm,bottom=1.25cm}
 \usepackage{xeCJK, fontspec, xunicode, xltxtra}  
 \usepackage[colorlinks,
             linkcolor=blue,
@@ -31,7 +31,7 @@
 } 
 
 
-\title{Report of Assignment 5\\2016060104002\_2017060103023}
+\title{2016060104002\_2017060103023}
 \author{Haodong Liao \& Fan Gao}
 
 \begin{document}
@@ -72,15 +72,15 @@
 
 % \end{itemize}
 
-\section{Preface}
+\subsubsection*{Preface}
 
-This is a \LaTeX report written by Haodong Liao and Fan Gao, students of UESTC who participated in the summer school of UCPH. More codes of this summer school are at \href{https://github.com/Medill-East/ComputerScience/tree/master/Professional%20Core%20Courses/Functional%20Programming/SummerSchool/Advanced%20Functional%20Programming/AdvancedFunctionalProgramming/AdvancedFunctionalProgramming}{Repository}.
+This is a \LaTeX  report written by Haodong Liao and Fan Gao, students of UESTC who participated in the summer school of UCPH. More codes of this summer school are at \href{https://github.com/Medill-East/ComputerScience/tree/master/Professional%20Core%20Courses/Functional%20Programming/SummerSchool/Advanced%20Functional%20Programming/AdvancedFunctionalProgramming/AdvancedFunctionalProgramming}{Repository}.
 
-\section{Introduction}
+\subsubsection*{Introduction}
 
-Lambda calculus (also written as $\lambda$-calculus) is a formal system in mathematical logic for expressing computation based on function abstraction and application using variable binding and substitution\footnote[1]{https://en.wikipedia.org/wiki/Lambda\_calculus}, it is one of the three fundamental conputational models and is the mother of all functional programming languages.
+Lambda calculus (also written as $\lambda$-calculus) is a formal system in mathematical logic for expressing computation based on function abstraction and application using variable binding and substitution\footnote[1]{https://en.wikipedia.org/wiki/Lambda\_calculus}. It is one of the three fundamental conputational models and is the mother of all functional programming languages.
 
-In this assignment, we needed to implement an interpreter for terms of untyped $\lambda$ calculus as presented in the given slides. We used methods like pattern-matching, tuple and so on to met the requirements and we had to say that figured out the logic of recursion was very challenging for us, thankfully, things went well.
+In this assignment, we needed to implement an interpreter for terms of untyped $\lambda$ calculus as presented in the given slides. We used methods like pattern-matching, tuple and so on to meet the requirements and we had to say that figured out the logic of recursion was very challenging for us, thankfully, things went well.
 
 % All in all, the results I achieved were as following:
 
@@ -98,8 +98,8 @@ In this assignment, we needed to implement an interpreter for terms of untyped $
 
 % This program takes 2 arguments: a string and a positive integer \emph{n}. The string can be either \emph{map}, \emph{fold}, or \emph{filter}. The output is a random list of length \emph{n} consisting of positive integers less than 10 and a processed list. For \emph{fold}, the random elements have been multiplied by 2 and their order has been reversed, and for \emph{filter}, only those elements larger than 4 have been included.
 
-\section{Analysis and Design}
-\subsection{Term}
+\subsubsection*{Analysis and Design}\label{sec:analysisanddesign}
+% \subsubsection*{Term}
 
 
 % \lstset{language=Csh}
@@ -108,13 +108,16 @@ In this assignment, we needed to implement an interpreter for terms of untyped $
 %   f:('State -> 'T -> ' State) -> elm:'State -> lst: 'T list -> ' State
 % \end{lstlisting}
 
-According to \cite{sorensen2006lectures}, the objects of study in $\lambda$-calculus are $\lambda-terms$, and the set of \emph{pre-terms} has three kinds of elements: \emph{variable, abstraction and application}, so it was not hard for us to implement the embedded domain specific language \emph{Term}, for the grammar \emph{pre-term} with the given slide \emph{Lambda calculus AST}.
+\textbf{Term:} According to \cite{sorensen2006lectures}, the objects of study in $\lambda$-calculus are $\lambda-terms$, and the set of \emph{pre-terms} has three kinds of elements: \emph{variable, abstraction and application}, so it was not hard for us to implement the embedded domain specific language \emph{Term}, for the grammar \emph{pre-term} with the given slide \emph{Lambda calculus AST}.
 
-\subsection{Substitute}
+% \subsection{Substitution}\label{sec:substitution}
 
-In this sub-assignment, we needed to implement the function \emph{substitute} which performed the substitution.
+\textbf{Substitution:} In this sub-task, we needed to implement the function \emph{substitute} which performed the substitution.
 
-Since we could ignore the free variable side condition, there were three branches needed to be handled.
+Since we could ignore the free variable side condition, there were three branches needed to be handled.\\
+\indent Var x: if x was equaled to the given substitute argument, then we substitued it with the target argument.\\
+\indent Abs (x,y): according to the structure of abstraction, x was a variable, so we needed to compare y with the given substitute argument and call this function recursively.\\
+\indent App (x,y): same as abstraction, but it required to substitute both x and y recursively with the given argument (if they were equivalent).
 
 % let rec substitute (term : Term) (var : VarType) (sub : Term) = 
 %     match term with
@@ -123,104 +126,160 @@ Since we could ignore the free variable side condition, there were three branche
 %     | App (x,y) -> App (substitute x var sub, substitute y var sub)
 %     | _ -> term
 
-\begin{enumerate}[(i)]
-\item Var x: if x was equiled to the given substitute argument, then we substitued it with the target argument.
-\item Abs (x,y): according to the structure of abstraction, x was a variable, so we needed to compare y with the given substitute argument and called this function recursively.
-\item App (x,y): same as abstraction, but it required to substitute both x and y recursively with the given argument(if they were equivalent).
-\end{enumerate}
+% \begin{enumerate}[(i)]
+% \item Var x: if x was equiled to the given substitute argument, then we substitued it with the target argument.
+% \item Abs (x,y): according to the structure of abstraction, x was a variable, so we needed to compare y with the given substitute argument and called this function recursively.
+% \item App (x,y): same as abstraction, but it required to substitute both x and y recursively with the given argument(if they were equivalent).
+% \end{enumerate}
 
-List.fold function \emph{updates an accumulator iteratively by applying f to each element in lst}. 
+\textbf{Reduction:} To implement the function \textbf{reduction}, we substituted in the appropriate order recursively until a $\beta$-normal form was reached. 
 
-So there were two branches needed to be handled, one is an empty list, the other is a list with element(s). For an empty list, the return value couldn't be constrained to list and should be as same as the accumulator. For a list with element(s), fold function should be called recursively, the accumulator should always be the result of argument function which had parameters of the accumulator and the current element of the list. The key part of the pseudocode is shown as following:
+\indent Var x: if an $\beta$-reduction had already been performed on this term of \emph{VarType}, then returned itself directly.\\
+\indent Abs(x, y): y was the \emph{abstraction body} and needed to continue performing reduction on it until reaching a \emph{variable}.
+\indent App(x, y): if x was an \emph{App}, reduction would be performed on both parts of it. If x was an \emph{abstraction}, a substitution would be performed and then a reduction on the result.
+
+\textbf{Evaluation:} We performed $\beta$-reduction on the \emph{abstraction} in an \emph{application} recursively
+ % like $( \lambda x . M ) N = M [ x : = N ]$ 
+ by calling \textbf{reduce} in this sub-task. The order of evaluation also deserved special notice to avoid incomplete reduction. 
+
+Additionally, a problem was that some $\lambda$-term would end in an infinite $\beta$-reduction loop.
+% , like $\Omega$ and $( \lambda x . z ( x x ) ) \lambda y . z ( y y )$. 
+To solve this, we defined two variable \emph{red} and \emph{cnt}, which represented whether a $\beta$-reduction was performed on this $\lambda$-term and count the times. When the reduction iterated times reached 100, this loop would be ended immediately and returned its original term. This worked well for special situations in our program.
+% stated above.
+
+
+
+% \textbf{Evaluation:} 
+
+
+
+% List.fold function \emph{updates an accumulator iteratively by applying f to each element in lst}. 
+
+% So there were two branches needed to be handled, one is an empty list, the other is a list with element(s). For an empty list, the return value couldn't be constrained to list and should be as same as the accumulator. For a list with element(s), fold function should be called recursively, the accumulator should always be the result of argument function which had parameters of the accumulator and the current element of the list. The key part of the pseudocode is shown as following:
+
+% \begin{lstlisting}
+% Fold function accumulator list =
+%   match list with
+%     | emptylist -> return accumulator
+%     | list with element(s) -> 
+%         Fold function (result of function with 
+%         current accumulator and element) restList
+% \end{lstlisting}
+
+
+% % \lstset{language=Csh}
+% \begin{lstlisting}
+% List.filter: f:('T -> bool) -> lst:'T list -> 'T list
+% \end{lstlisting}
+
+% According to \cite{sporring2019}, List.filter function \emph{returns a new list with all the elements of lst for which f evaluates to true}. 
+
+% Same as fold function, there were two branches needed to be handled. For an empty list, the return value should be the empty list itself. For a list with element(s), filter function should be called recursively according to the bool expression, if the value was true, not only should we call the filter function recursively, the current element should be a part of the result list. If the value of bool expression is false, there was no need to care about the current element. The key part of the pseudocode is shown as following:
+
+% \begin{lstlisting}
+% Filter boolexpression list =
+%   match list with
+%     | emptylist -> return emptylist
+%     | list with element(s) -> 
+%         if boolexpression is true
+%         then
+%           concat current element 
+%           call Filter function with boolexpression and rest list
+%         else
+%           call Filter function with boolexpression and rest list  
+
+% \end{lstlisting}
+
+\subsubsection*{Program description}
+
+Our implementation of \textbf{Term} was as follows:
 
 \begin{lstlisting}
-Fold function accumulator list =
-  match list with
-    | emptylist -> return accumulator
-    | list with element(s) -> 
-        Fold function (result of function with 
-        current accumulator and element) restList
+type Term =
+    | Var of VarType
+    | App of Term * Term
+    | Abs of VarType * Term
 \end{lstlisting}
 
+As it was shown, \emph{Var, App and Abs} represented \emph{variable, abstraction and application} separately.
+
+% to my point of view, the place I made mistake was the key of this function, for an empty list or a list with element(s), a problem I met was that I constrained the type of return value. It was a subtle but vital problem.
+
+Our implementation of \textbf{substitute} function was as follows:
 
 % \lstset{language=Csh}
 \begin{lstlisting}
-List.filter: f:('T -> bool) -> lst:'T list -> 'T list
+let rec substitute (term: Term) (var: VarType) (sub: Term) =
+    match term with
+    | Var x when x = var -> sub
+    | Abs(x, y) -> Abs(x, substitute y var sub)
+    | App(x, y) -> App(substitute x var sub, substitute y var sub)
+    | _ -> term
 \end{lstlisting}
 
-According to \cite{sporring2019}, List.filter function \emph{returns a new list with all the elements of lst for which f evaluates to true}. 
+The key to this function was to compare and substitute the type \emph{Term} to target argument.
 
-Same as fold function, there were two branches needed to be handled. For an empty list, the return value should be the empty list itself. For a list with element(s), filter function should be called recursively according to the bool expression, if the value was true, not only should we call the filter function recursively, the current element should be a part of the result list. If the value of bool expression is false, there was no need to care about the current element. The key part of the pseudocode is shown as following:
+% I struggled in the code of a list with element(s) when I started to solve this problem, and the point confused me was that I got bogged down with the detail of recursion and ignored the branches of boolean{} expressions. Things went smoothly when I rearranged my thoughts.
 
-\begin{lstlisting}
-Filter boolexpression list =
-  match list with
-    | emptylist -> return emptylist
-    | list with element(s) -> 
-        if boolexpression is true
-        then
-          concat current element 
-          call Filter function with boolexpression and rest list
-        else
-          call Filter function with boolexpression and rest list  
-
-\end{lstlisting}
-
-\section{Program description}
-
-My implementation of fold function was as follows:
-
-\begin{lstlisting}
-let rec myFold (f: 'b -> 'a -> 'b) (acc: 'b) (lst: 'a list) : 'b =
-  match lst with
-    | [] -> acc
-    // [] -> []		// second time wrong
-    | elm::rest -> 
-        //let result = myFold f acc rest @ (f acc elm) // first time wrong
-        let result = myFold f (f acc elm) rest
-        result
-\end{lstlisting}
-
-As it shows, to my point of view, the place I made mistake was the key of this function, for an empty list or a list with element(s), a problem I met was that I constrained the type of return value. It was a subtle but vital problem.
-
-My implementation of filter function was as follows:
+Our implementation of \textbf{reduce} function was as follows:
 
 % \lstset{language=Csh}
 \begin{lstlisting}
-let rec myFilter (p: 'a -> bool) (lst: 'a list) : 'a list =
-  //List.filter p lst
-  match lst with
-  | [] -> []
-  | elm::rest -> 
-    if (p elm) then [elm] @ (myFilter p rest)
-    else myFilter p rest
+let mutable cnt = 0
+let rec reduce ((term, red, cnt): Term * bool * int) =
+    match term with
+    | Var x when red = true -> Var x
+    | Abs(x, y) -> 
+        if cnt >= 100 then Abs(x, y) else Abs(x, reduce (y, red, cnt + 1))
+    | App(left, right) -> 
+        if cnt >= 100 then App(left, right) else
+        match reduce (left, true, cnt + 1) with
+        | Var _ -> App(left, reduce (right, red, cnt + 1))
+        | App(x,y) -> App(reduce (x,red,cnt+1),reduce (y,red,cnt+1))
+        | Abs(x, y) -> reduce ((substitute y x right), red, cnt + 1)
+    | _ -> term
 \end{lstlisting}
 
-I struggled in the code of a list with element(s) when I started to solve this problem, and the point confused me was that I got bogged down with the detail of recursion and ignored the branches of boolean expressions. Things went smoothly when I rearranged my thoughts.
+The key to this function was to substitute the abstraction in an application recursively. When the iteration ends in an infinite reduction loop, it would return the original $\lambda$-term.
 
-\section{Evaluation}
+Our implementation of \textbf{eval} function was as follows:
+
+% \lstset{language=Csh}
+\begin{lstlisting}
+let rec eval (term: Term) =
+    match term with
+    | Var x -> Var x
+    | Abs(x, y) -> Abs(x, y)
+    | App(t1, t2) ->
+        match eval t1 with
+        | Var _ -> t1
+        | App(t3, t4) -> App(t3, t4)
+        | Abs(v, t) -> reduce (term, false, 0)
+\end{lstlisting}
+
+The key to this function was to call the \textbf{reduce} to evaluate the expression. It would call it with argument \emph{term, false, 0}, which marked the beginning of the reduction.
+
+\subsubsection*{Evaluation}
 
 The testing environment was macOS Mojave 10.14.5 system with iTerm and Microsoft (R) F\# Compiler version 4.1.
 
-I complied and tested the fold and filter function with parameter \emph{fold 9} and \emph{filter 9}, and the result were correct and showed in Figure \ref{fig:fold} and Figure \ref{fig:filter} separately:
+We complied and tested the program, part of results were showed in Figure \ref{fig:eval3} (infinite situation was not shown there):
 
 \begin{figure}[h]
       \centering
-      \includegraphics[width=\linewidth]{fold2}
-      \caption{Testing of fold function}
-      \label{fig:fold}
+      \includegraphics[width=0.8\linewidth]{eval3}
+      \caption{Testing of program}
+      \label{fig:eval3}
 \end{figure}
 
-\begin{figure}[h]
-      \centering
-      \includegraphics[width=\linewidth]{filter2}
-      \caption{Testing of filter function}
-      \label{fig:filter}
-\end{figure}
+\subsubsection*{Discussion \& Conclusion}
 
-\section{Conclusion}
+As shown in Figure \ref{fig:eval3}, for the first three results, if we did it manually: the first input was $xy$, the output was itself, i.e., $App(Var"x",Var"y")$. The second input was $\lambda z.xy$, the output was itself too, i.e., $Abs("z",App(Var"x",Var"y"))$. For the third test, it substituted the $y$ to $z$, i.e., $xy[y:=z]->xz$. We took $\Omega$ as the last test input, since there was a infinite substitute loop, we returned itself as result. Our program worked well and all of our results were correct.
 
-In this assignment, I implemented the \emph{myFold} and \emph{myFilter} functions with my own recursive method. I stuck at the beginning of my writing, but things went smoothly when I rearranged my thoughts and wrote down the pseudocode. It's easy to get bogged down in the details of a program, but we should take a top-down functional programming approach and thinking more about what to do than how to do it.
+In this assignment, we implemented an interpreter for terms of untyped $\lambda$ calculus. We spent a lot of time to figure out the logic of recursion and the structure of our "tree". It was challenging and rewarding.
+
+% We used methods like pattern-matching, tuple and so on to met the requirements and we had to say that figured out the logic of recursion was very challenging for us, thankfully, things went well.
+% I implemented the \emph{myFold} and \emph{myFilter} functions with my own recursive method. I stuck at the beginning of my writing, but things went smoothly when I rearranged my thoughts and wrote down the pseudocode. It's easy to get bogged down in the details of a program, but we should take a top-down functional programming approach and thinking more about what to do than how to do it.
 
 
 %\renewcommand\refname{Reference\\
