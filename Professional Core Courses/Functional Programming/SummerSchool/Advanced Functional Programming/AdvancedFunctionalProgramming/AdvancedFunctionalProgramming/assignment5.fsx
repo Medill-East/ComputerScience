@@ -34,7 +34,8 @@ let rec reduce ((term,red) : (Term * bool)) =
     | App (left,right) -> 
         match left with
         | Var x -> App(left,reduce(right,red))
-        | Abs(x,y) -> substitute left x y
+        | Abs(x,y) -> substitute y x right
+        // | Abs(x,y) -> substitute left x y
         | App(x,y) -> App(reduce (x,red), reduce(y,red))
     | _ -> term
      
@@ -45,13 +46,37 @@ let rec eval (term : Term) =
     match term with
     | Var x -> Var x
     | Abs(x,y) -> Abs(x,y) 
-    | App (f, arg) -> 
-    //eval (reduce (f,true))
-        match eval f with 
-        | Var _ -> f
-        | Abs(x,e) -> eval (substitute e x arg)
-        | App (t3, t4) -> App (t3, t4)
-        //| Abs(x,e) -> eval (reduce (f,false))
+
+    | App (t1, t2) -> 
+        match eval t1 with
+            //| Abs (v, t) -> eval (substitute t v t2)
+        | Var _ -> t1
+            // match reduce (Abs(v, t), false) with
+            // | Var x' -> Var x'
+            // | Abs(v', t') when v'=v && t'=t -> Abs(v, t)
+            // | App (t5, t6) -> App(t5, t6)
+            // | _ -> reduce (Abs(v, t), false)
+        | App (t3, t4) -> App (t3, t4)  
+        | Abs (v, t) -> reduce (term, false)      
+        // | t' -> 
+        //     match t' with
+        //     | t1 ->
+        //         match eval t' with
+        //         | t' -> t'
+        //         | Abs (v, t) -> eval (substitute t v t2)
+        // | Abs (v, t) -> eval (substitute t v t2)
+
+
+   
+    // | App (f, arg) -> 
+    // //eval (reduce (f,true))
+    //     match reduce(f, false) with 
+    //     | App (t3, t4) when App (t3, t4) = f -> f
+    //     | Var _ -> f
+    //     | App (t3, t4) -> App (t3, t4)
+    //     | Abs(x,e) -> eval (substitute e x arg)
+    //     | _ -> f
+
         
 
 
@@ -62,8 +87,12 @@ let term2 = Abs ("z", term1)
 let term3 = App (Abs ("x", Var "x"), Var "y")
 let term4 = Abs("x", Var("x"))
 let term5 = App(Abs("x", Var "x"), Var "z")
+let omega = Abs("x", App(Var "x", Var "x"))
+let Omega = App(omega, omega)
+let term6 = App(Abs("x", Var("x")), App(Abs("x", Var "x"), Var "z"))
 
-printfn ""
+
+printfn "" 
 printfn """Your result should be: App (Var "x",Var "y")
 Your result is: %A""" term1
 
@@ -80,9 +109,33 @@ printfn """Your result should be: Var "y"
 Your result is: %A""" (eval term3)
 
 printfn ""
-printfn """Your result should be: App (Var "x",Var "x")
+printfn """Your result should be: Var "y"
+Your result is: %A""" (reduce (term3, false))
+
+printfn ""
+printfn """Your result should be: Abs (Var "x",Var "x")
 Your result is: %A""" (eval term4)
 
 printfn ""
 printfn """Your result should be: Var "z"
 Your result is: %A""" (reduce (term5, false))
+
+printfn ""
+printfn """Your result should be: Abs("x", App(Var "x", Var "x"))
+Your result is: %A""" (reduce (omega, false))
+
+printfn ""
+printfn """Your result should be: App(omega, omega)
+Your result is: %A""" (reduce (Omega, false))
+
+printfn ""
+printfn """1Your result should be: omega
+Your result is: %A""" (eval omega) //infinite loop
+
+printfn ""
+printfn """3Your result should be: App(Var "z", Var "z")
+Your result is: %A""" (eval term6) 
+
+printfn ""
+printfn """2Your result should be: App(omega, omega)
+Your result is: %A""" (eval Omega) //infinite loop
