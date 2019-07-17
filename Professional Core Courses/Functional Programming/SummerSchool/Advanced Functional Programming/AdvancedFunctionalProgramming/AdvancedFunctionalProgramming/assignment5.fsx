@@ -44,11 +44,13 @@ let rec reduce ((term,red) : (Term * bool)) =
 let rec eval (term : Term) = 
     match term with
     | Var x -> Var x
-    | Abs(x,y) -> eval y
+    | Abs(x,y) -> Abs(x,y) 
     | App (f, arg) -> 
     //eval (reduce (f,true))
-        match f with 
+        match eval f with 
+        | Var _ -> f
         | Abs(x,e) -> eval (substitute e x arg)
+        | App (t3, t4) -> App (t3, t4)
         //| Abs(x,e) -> eval (reduce (f,false))
         
 
@@ -58,15 +60,29 @@ let rec eval (term : Term) =
 let term1 = App (Var "x", Var "y")
 let term2 = Abs ("z", term1)
 let term3 = App (Abs ("x", Var "x"), Var "y")
+let term4 = Abs("x", Var("x"))
+let term5 = App(Abs("x", Var "x"), Var "z")
+
 printfn ""
 printfn """Your result should be: App (Var "x",Var "y")
 Your result is: %A""" term1
+
 printfn ""
 printfn """Your result should be: Abs ("z",App (Var "x",Var "y"))
 Your result is: %A""" term2
+
 printfn ""
 printfn """Your result should be: App (Var "x",Var "z")
 Your result is: %A""" (substitute term1 "y" (Var "z"))
+
 printfn ""
 printfn """Your result should be: Var "y"
 Your result is: %A""" (eval term3)
+
+printfn ""
+printfn """Your result should be: App (Var "x",Var "x")
+Your result is: %A""" (eval term4)
+
+printfn ""
+printfn """Your result should be: Var "z"
+Your result is: %A""" (reduce (term5, false))
