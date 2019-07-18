@@ -74,13 +74,43 @@ let rec trieToSeq<'a when 'a : comparison> (trie: Trie<'a>) : 'a list seq =
 /// A global object to create random values. 
 let rnd = System.Random() 
 
+/// Convert a string to a charlist
+let rec stringToCharlist (input: string) : char list = 
+    match input with
+    | "" -> []
+    | str -> str.[0]::(stringToCharlist str.[1..])
+
 /// Looks up a string prefix in the trie and returns an option of its (sub)trie. 
 let lookup (prefix: string) (trie: Trie<char>) : Trie<char> Option = 
     // Fill in here.
+    match prefix with
+    | "" -> None
+    | str -> find (stringToCharlist str) trie
+
+//printfn "input %A in hectrie and we get: %A" "a" (lookup "a" hectrie)
+
+/// Convert a Trie<char> to Seq<string>
+let rec triecharToSeqString (input: Trie<char>) : string seq = 
+    match input with
+    | empty -> Seq.empty
+    | charList -> (charList.ToString()::(charList.Children.ToString())) |> Seq.ofList
 
 /// Uses a string prefix to complete a string by using the string as a prefix in the trie to look up its children. 
 let autoComplete (prefix: string) (trie: Trie<char>) : string seq = 
     // Fill in here.
+    match prefix with
+    | "" -> Seq.empty
+    | str -> 
+        try
+            match (lookup str trie) with
+            | Option.None -> Seq.empty
+            | Some x -> x
+                //Seq.collect (fun a -> a ) (trieToSeq x)
+        with
+            | ex -> eprintf "An exception occurred with message %s" ex.Message
+                    Seq.empty
+
+                    //List.collect (fun x -> [for i in 1..3 -> x * i]) list1
 
 /// Uses the trie to check if a word is correct by checking containment in the trie. 
 let spellCheck (word: string) (trie: Trie<char>) : bool = 
@@ -119,6 +149,10 @@ let hcaTrie = insertIntoTrie (processTxtToSeq hca) empty
 /// Error message in case of a failed or missed console parameter. 
 let printErrorMessage () =
     printfn "Program Input should be either 'autocomplete', 'spellcheck', or 'generate text'."
+
+/// test
+//printfn "input %A in hectrie and we get: %A" "a" (lookup "a" hectrie)
+
 
 /// Main entry point for execution which is triggering the tests 
 /// provided as a console parameter, in the parameter list. 
