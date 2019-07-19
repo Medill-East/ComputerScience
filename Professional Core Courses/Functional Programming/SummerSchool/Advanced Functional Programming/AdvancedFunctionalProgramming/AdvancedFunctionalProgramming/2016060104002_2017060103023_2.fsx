@@ -1,4 +1,4 @@
-open System
+﻿open System
 /// Parts of the code are created by psaxton on GitHub:
 /// https://gist.github.com/psaxton/c6ec6841a63bf0092304787697dc3beb
 
@@ -79,10 +79,7 @@ let rec stringToCharlist (input: string) : char list =
     match input with
     | "" -> []
     | str -> str.[0]::(stringToCharlist str.[1..])    
-
-let stringToList (input:string) : string list = 
-    Array.toList(input.Split(""))
-
+    
 /// Convert charlist to a string
 let rec charlistToString (input: char list): string = 
     match input with
@@ -96,12 +93,6 @@ let lookup (prefix: string) (trie: Trie<char>) : Trie<char> Option =
     | "" -> None
     | str -> find (stringToCharlist str) trie
 
-/// Convert a Trie<char> to Seq<string>
-let rec triecharToSeqString (input: Trie<char>) : string seq = 
-    match input with
-    //| empty -> Seq.empty
-    | charList -> (charList.ToString()::(stringToList (charList.Children.ToString()))) |> Seq.ofList
-
 /// Uses a string prefix to complete a string by using the string as a prefix in the trie to look up its children. 
 let autoComplete (prefix: string) (trie: Trie<char>) : string seq = 
     // Fill in here.
@@ -112,8 +103,6 @@ let autoComplete (prefix: string) (trie: Trie<char>) : string seq =
             match (lookup str trie) with
             | Option.None -> Seq.empty
             | Some x -> Seq.map (fun x-> x.ToString()) (trieToSeq trie)
-                //triecharToSeqString x
-                //Seq.collect (fun a -> a ) (trieToSeq x)
         with
             | ex -> eprintf "An exception occurred with message %s" ex.Message
                     Seq.empty
@@ -127,33 +116,13 @@ let spellCheck (word: string) (trie: Trie<char>) : bool =
 let randWord (trie: Trie<char>) : char list = 
     // Fill in here.
     let wordList = Seq.toList (trieToSeq trie)  //char list list
-    //printfn "%A" wordList.[Random().Next(0,wordList.Length)]
     wordList.[Random().Next(1,wordList.Length)] // char list
-    //match trie with
-    ////| empty -> []
-    //| x -> (stringToCharlist ((triecharToSeqString x).ToString()))
-
-/// Generates recursively
-let rec recursiveGen (length:int) (trie: Trie<char>) : string = 
-    match length with
-    //| 1 -> String.Empty
-    | x when x > 1 -> ((randWord trie)::(stringToCharlist " ")::[(stringToCharlist (recursiveGen (length-1) trie))]).ToString()
-    | 1 -> (randWord trie).ToString()
-    | _ -> "Error"
 
 /// Generates a text based on a length len and trie. The result is a string consisting of len words drawn out of the trie. 
 let rec genText (len: int) (trie: Trie<char>) : string =
     // Fill in here.
-    //recursiveGen len trie
     match len with
-    //| 1 -> String.Empty
-    //| x when x > 1 -> ((randWord trie)::(stringToCharlist " ")::[(stringToCharlist (genText (len-1) trie))]).ToString()
-
-    //| x when x > 1 -> (randWord trie).ToString() + " " + (genText (len-1) trie)
-    //| 1 -> (randWord trie).ToString()
-    //| _ -> "Error"
-
-    | x when x > 1 -> (charlistToString (randWord trie)) + " " + (genText (len-1) trie)
+    | x when x > 1 -> (charlistToString (randWord trie)) + " " + (genText (x-1) trie)
     | 1 -> (charlistToString (randWord trie))
     | _ -> "Error"
 
@@ -167,8 +136,6 @@ let readText (filename : string) : string =
 
 /// Reads the text files and returns it as a string. 
 let hca = (readText "littleClausAndBigClaus.txt") 
-//let hca = (readText "testtext.txt") 
-
 
 /// Inserts a string txt into a Trie trie.
 let insertIntoTrie (txt: char list list) (trie: Trie<char>) : Trie<char> =
@@ -179,12 +146,6 @@ let processTxtToSeq (txt : string) =
     txt.ToLower().Split [|' '; ','; '.'; '\010'; ';'; '?'; '!'; '"'; '\''|]
     |> Seq.toList
     |> List.map stringToCharlist
-    //|> // Fill in here.
-    //stringToCharlist ((txt.ToLower().Split [|' '; ','; '.'; '\010'; ';'; '?'; '!'; '"'; '\''|]).ToString())
-    //|> // Fill in here.
-
-
-
 
 /// Generates the trie based on HCA's text. 
 let hcaTrie = insertIntoTrie (processTxtToSeq hca) empty
@@ -192,11 +153,7 @@ let hcaTrie = insertIntoTrie (processTxtToSeq hca) empty
 /// Error message in case of a failed or missed console parameter. 
 let printErrorMessage () =
     printfn "Program Input should be either 'autocomplete', 'spellcheck', or 'generate text'."
-
-/// test
-//printfn "input %A in hectrie and we get: %A" "a" (lookup "a" hectrie)
-
-
+    
 /// Main entry point for execution which is triggering the tests 
 /// provided as a console parameter, in the parameter list. 
 [<EntryPoint>]
@@ -208,19 +165,16 @@ let main (paramList : string []) : int =
       let (is_ok, res) = 
         match paramList.[0] with
           | "autocomplete" ->
-            let res_pos = ["st"; "ca"; "cu"]    |> List.forall (fun x->autoComplete x hcaTrie |> Seq.isEmpty |> not)
-            let res_neg = ["gts"; "kns"; "iqw"] |> List.exists (fun x->autoComplete x hcaTrie |> Seq.isEmpty)
+            let res_pos = ["st"; "ca"; "cu"; "wh"; "ab"; "cl"] |> List.forall (fun x->autoComplete x hcaTrie |> Seq.isEmpty |> not)
+            let res_neg = ["gts"; "kns"; "iqw"; "ijk"; "tzw"] |> List.exists (fun x->autoComplete x hcaTrie |> Seq.isEmpty)
             (res_pos && res_neg, "Autocomplete.")
           | "spellcheck" ->
-            let res_pos = ["standing"; "can"; "about"] |> List.forall (fun x->spellCheck x hcaTrie)
-            let res_neg = ["gts"; "cfm"; "iqw"] |> List.exists (fun x->spellCheck x hcaTrie)
+            let res_pos = ["standing"; "can"; "about"; "one"; "four"] |> List.forall (fun x->spellCheck x hcaTrie)
+            let res_neg = ["gts"; "cfm"; "iqw"; "txq"; "ihu"; "svv"] |> List.exists (fun x->spellCheck x hcaTrie)
             (res_pos && not res_neg, "Spellcheck.")
           | "generatetext" ->
             let res_pos = (((genText 50 hcaTrie).Split [|' '|]).Length=50)
             let res_neg = (((genText 30 hcaTrie).Split [|' '|]).Length=10)
-            //printf "first length:%A\n" ((genText 50 hcaTrie).Split [|' '|]).Length
-            //printf "%A\n" ((genText 30 hcaTrie).Split [|' '|]).Length
-            
             (res_pos && not res_neg, "Generate text.")
           | _ ->
             do printErrorMessage ()
