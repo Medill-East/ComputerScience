@@ -14,8 +14,8 @@ namespace Algorithms_in_CSharp.Chap01
 
             while(minNum<=maxNum)
             {
-                int mid = (minNum + maxNum) / 2;
-                if(target == inputList[mid])
+                int mid = (minNum + maxNum) / 2;    //define the middle index
+                if(target == inputList[mid])        //if the target is equall to arr[mid]
                 {
                     return mid;
                 }
@@ -31,13 +31,17 @@ namespace Algorithms_in_CSharp.Chap01
             return "None";
         }
 
-        public static void Main(string[] args)
+        public static void CallBinarySearchDisplay()
         {
             int[] inputList = { 7, 9, 5, 2, 3 };
             Array.Sort(inputList);
 
             Console.WriteLine(BinarySearchDisplay(inputList, 3));
-            Console.WriteLine(BinarySearchDisplay(inputList, 1));
+            Console.WriteLine(BinarySearchDisplay(inputList, 2));
+            Console.WriteLine(BinarySearchDisplay(inputList, 9));
+            Console.WriteLine(BinarySearchDisplay(inputList, 0));
+
+
 
 
         }
