@@ -7,6 +7,13 @@ namespace Algorithms_in_CSharp.Chap01
         {
             // Call BinarySearchDisplay
             BinarySearch.CallBinarySearchDisplay();
+
+            // Show the answer to the exercises
+            Ex01.Ansto1_1_1();
+            Ex01.Ansto1_1_2();
+            Ex01.Ansto1_1_3();
+
+
         }
     }
 }

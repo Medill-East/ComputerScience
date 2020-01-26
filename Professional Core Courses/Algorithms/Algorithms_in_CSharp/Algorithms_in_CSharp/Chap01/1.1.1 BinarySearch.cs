@@ -36,6 +36,7 @@ namespace Algorithms_in_CSharp.Chap01
             int[] inputList = { 7, 9, 5, 2, 3 };
             Array.Sort(inputList);
 
+            Console.WriteLine("The results of binary search are:");
             Console.WriteLine(BinarySearchDisplay(inputList, 3));
             Console.WriteLine(BinarySearchDisplay(inputList, 2));
             Console.WriteLine(BinarySearchDisplay(inputList, 9));

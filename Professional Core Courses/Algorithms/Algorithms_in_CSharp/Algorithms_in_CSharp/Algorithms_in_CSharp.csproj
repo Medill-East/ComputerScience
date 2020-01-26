@@ -27,6 +27,7 @@
   <ItemGroup>
     <Compile Include="Chap01\1.1.1 BinarySearch.cs" />
     <Compile Include="Chap01\ProgramChap01.cs" />
+    <Compile Include="Chap01\Ex01.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
