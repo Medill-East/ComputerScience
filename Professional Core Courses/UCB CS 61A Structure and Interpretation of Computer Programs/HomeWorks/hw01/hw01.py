@@ -99,12 +99,13 @@ def with_if_function():
 
 def c():
     "*** YOUR CODE HERE ***"
-
+    5==6
 def t():
     "*** YOUR CODE HERE ***"
-
+    print(5)
 def f():
     "*** YOUR CODE HERE ***"
+    print(6)
 
 def hailstone(x):
     """Print the hailstone sequence starting at x and return its
@@ -122,3 +123,17 @@ def hailstone(x):
     7
     """
     "*** YOUR CODE HERE ***"
+    count = 0
+    while x!=1:
+        if x%2==0:
+            print(int(x))
+            x/=2
+            count +=1
+        else:
+            print(int(x))
+            x = x*3+1    
+            count +=1
+    else:
+        print(1)
+        count+=1
+        return count
