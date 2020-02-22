@@ -34,6 +34,8 @@ namespace Algorithms_in_CSharp.Chap01
             //string str = Console.ReadLine();
             //string str = "1 2 3";
             string str = "1 1 2";
+            Console.WriteLine("The numbers you input are: " + str);
+
 
             string[] compListStr = str.Split(' ');
             string comparator = compListStr[0];
@@ -47,18 +49,6 @@ namespace Algorithms_in_CSharp.Chap01
                 }
             }
 
-            //for (int i = 0; i < compListStr.Length-1; i++)
-            //{
-            //    if (compListStr[i] == compListStr[i + 1])
-            //    {
-            //        flag_equal = true;
-            //    }
-            //    else
-            //    {
-            //        flag_equal = false;
-            //    }
-            //}
-
             if (flag_equal == true)
             {
                 Console.WriteLine("These three numbers are equal.");
@@ -68,5 +58,55 @@ namespace Algorithms_in_CSharp.Chap01
                 Console.WriteLine("These three numbers are not equal.");
             }
         }
+
+        public static void Ansto1_1_5()
+        {
+            Console.WriteLine("Answer to the ques 1.1.5:\n");
+            double x = 0.00000000000000001;
+            double y = 0.999999999;
+            bool areXandYbetween0and1 = false;
+            if (0.0 < x && x < 1.0 && 0.0 < y && y < 1.0)
+            {
+                areXandYbetween0and1 = true;
+            }
+            Console.WriteLine($"Both x and y are between 0 and 1: "+ areXandYbetween0and1);
+        }
+
+        public static void Ansto1_1_7()
+        {
+            double t = 9.0;
+            while (Math.Abs(t-9.0/t)>.001)
+            {
+                t = (9.0 / t + t) / 2.0;
+            }
+
+            int sum = 0;
+            for (int i = 1; i < 1000; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    sum++;
+                }
+            }
+
+            int sumc = 0;
+            for (int i = 1; i < 1000; i++)
+            {
+                for (int j = 0; j < 1000; j++)
+                {
+                    sum++;
+                }
+            }
+            Console.WriteLine("Answer to the ques 1.1.7:\n");
+            Console.WriteLine($"t= {t}, sum= {sum}, sumc = {sumc}");
+        }
+
+        public static void Ansto1_1_8()
+        {
+            Console.WriteLine('b');
+            Console.WriteLine('b' + 'c' + " = ASCALL ('b' + 'c') = 98 + 99");
+            Console.WriteLine((char)('a' + '4')) ;
+        }
+
     }
 }
