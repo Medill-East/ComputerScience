@@ -50,7 +50,11 @@ def largest_factor(x):
     >>> largest_factor(13) # factor is 1 since 13 is prime
     1
     """
-    "*** YOUR CODE HERE ***"
+    # "*** YOUR CODE HERE ***"
+    for i in range(1,(int(x/2)+1)):
+        if x%i==0:
+            j = i
+    return j
 
 def if_function(condition, true_result, false_result):
     """Return true_result if condition is a true value, and
