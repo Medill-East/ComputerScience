@@ -48,6 +48,15 @@ def count_cond(condition):
     8
     """
     "*** YOUR CODE HERE ***"
+    def counter(n):
+        i, count = 1,0
+        while i<= n:
+            if condition(n,i):
+                count += 1
+            i +=1    
+        return count
+    return counter    
+        
 
 def both_paths(sofar="S"):
     """
@@ -61,3 +70,9 @@ def both_paths(sofar="S"):
     SLL
     """
     "*** YOUR CODE HERE ***"
+    print(sofar)
+    def left():
+        return both_paths(sofar + "L")
+    def right():
+        return both_paths(sofar + "R")
+    return left, right        
